@@ -8,11 +8,13 @@
 package frc.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.*;
 
 // only worry about the constructor and the execute method, ignore the rest for now
 
 public class TankDriveCommand extends Command {
   public TankDriveCommand() {
+    requires(Robot.driveSubsystem);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     // TODO add a requirement for drivesubsystem here
@@ -26,6 +28,8 @@ public class TankDriveCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.driveSubsystem.arcadeDrive(Robot.m_io.getXbox0().getRawAxis(0), Robot.m_io.getXbox1().getRawAxis(1));
+
     // TODO run your tankdrive method from drivesubsystem
     // use the getRawAxis function to get axis values from the joysticks
   }
