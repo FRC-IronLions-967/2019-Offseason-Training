@@ -8,16 +8,23 @@
 package frc.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import com.ctre.
 
 /**
  * Add your docs here.
  */
 public class DriveSubsystem extends Subsystem {
+  private TalonSRX right;
+  private TalonSRX left;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   // TODO create some motor controller objects for driving
 
   // TODO create some methods for tank and split arcade drive, each using two inputs
+
+  public DriveSubsystem() {
+
+  }
 
   @Override
   public void initDefaultCommand() {
