@@ -8,6 +8,7 @@
 package frc.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.commands.SplitArcadeCommand;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -64,5 +65,6 @@ public class DriveSubsystem extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
     // TODO set your command here, either tank or split arcade, cannot be both
+    setDefaultCommand(new SplitArcadeCommand());
   }
 }
