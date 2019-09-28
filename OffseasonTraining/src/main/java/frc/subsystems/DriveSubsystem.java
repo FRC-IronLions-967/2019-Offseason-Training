@@ -16,8 +16,12 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
  * Add your docs here.
  */
 public class DriveSubsystem extends Subsystem {
-  private TalonSRX right;
-  private TalonSRX left;
+  private TalonSRX rightMaster;
+  private TalonSRX rightSlave0;
+  private TalonSRX rightSlave1;
+  private TalonSRX leftMaster;
+  private TalonSRX leftSlave0;
+  private TalonSRX leftSlave1;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   // TODO create some motor controller objects for driving
@@ -25,14 +29,26 @@ public class DriveSubsystem extends Subsystem {
   // TODO create some methods for tank and split arcade drive, each using two inputs
 
   public DriveSubsystem() {
-    right = new TalonSRX(3);
-    left = new TalonSRX(6);
-    left.setInverted(true);
+    rightMaster = new TalonSRX(3);
+    rightSlave0 = new TalonSRX(4);
+    rightSlave1 = new TalonSRX(5);
+    leftMaster = new TalonSRX(6);
+    leftSlave0 = new TalonSRX(7);
+    leftSlave1 = new TalonSRX(8);
+
+    leftMaster.setInverted(true);
+    leftSlave0.setInverted(true);
+    leftSlave1.setInverted(true);
+
+    rightSlave0.follow(rightMaster);
+    rightSlave1.follow(rightMaster);
+    leftSlave0.follow(leftMaster);
+    leftSlave1.follow(leftMaster);
   }
 
   public void move(double r, double l) {
-    right.set(ControlMode.PercentOutput, r);
-    left.set(ControlMode.PercentOutput, l);
+    rightMaster.set(ControlMode.PercentOutput, r);
+    leftMaster.set(ControlMode.PercentOutput, l);
   }
 
   public void tankDrive(double rAxis, double lAxis) {
