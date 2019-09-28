@@ -25,6 +25,7 @@ public class Robot extends IterativeRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   public static DriveSubsystem driveSubsystem;
+  public static IO io;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -36,6 +37,7 @@ public class Robot extends IterativeRobot {
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
     driveSubsystem = new DriveSubsystem();
+    io = new IO();
   }
 
   /**

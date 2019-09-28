@@ -8,7 +8,9 @@
 package frc.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import com.ctre.
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 /**
  * Add your docs here.
@@ -23,7 +25,22 @@ public class DriveSubsystem extends Subsystem {
   // TODO create some methods for tank and split arcade drive, each using two inputs
 
   public DriveSubsystem() {
+    right = new TalonSRX(3);
+    left = new TalonSRX(6);
+    left.setInverted(true);
+  }
 
+  public void move(double r, double l) {
+    right.set(ControlMode.PercentOutput, r);
+    left.set(ControlMode.PercentOutput, l);
+  }
+
+  public void tankDrive(double rAxis, double lAxis) {
+    move(rAxis, lAxis);
+  }
+
+  public void arcadeDrive(double xAxis, double yAxis) {
+    move((xAxis + yAxis)/2, (xAxis - yAxis)/2);
   }
 
   @Override
