@@ -7,11 +7,12 @@
 
 package frc.robot;
 
+
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.subsystems.DriveSubsystem;
-import sun.security.x509.OIDMap;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -20,7 +21,7 @@ import sun.security.x509.OIDMap;
  * creating this project, you must also update the build.gradle file in the
  * project.
  */
-public class Robot extends IterativeRobot {
+public class Robot extends IterativeRobot{
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
