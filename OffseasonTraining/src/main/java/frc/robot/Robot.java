@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.subsystems.DriveSubsystem;
+import frc.subsystems.HatchSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,6 +26,7 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   public static DriveSubsystem driveSubsystem;
+  public static HatchSubsystem hatchSubsystem;
   public static IO io;
   /**
    * This function is run when the robot is first started up and should be
@@ -36,6 +38,7 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
     driveSubsystem = new DriveSubsystem();
+    hatchSubsystem = new HatchSubsystem();
     io = new IO();
   }
 
