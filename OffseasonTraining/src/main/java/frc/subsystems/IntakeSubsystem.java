@@ -8,32 +8,25 @@
 package frc.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.commands.MoveArmCommand;
 
 /**
  * Add your docs here.
  */
-public class CargoSubsystem extends Subsystem {
-  private TalonSRX leftArm;
-  private TalonSRX rightArm;
-
-  public CargoSubsystem() {
-    leftArm = new TalonSRX(1);
-    rightArm = new TalonSRX(2);
-    leftArm.setInverted(true);
-  }
-
-  public void moveArm(double power) {
-    leftArm.set(ControlMode.PercentOutput, power);
-    rightArm.set(ControlMode.PercentOutput, power);
-  }
+public class IntakeSubsystem extends Subsystem {
+  private VictorSPX intake;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+  public IntakeSubsystem() {
+    intake = new VictorSPX(0);
+  }
+
+  public void intake(double power) {
+    intake.set(ControlMode.PercentOutput, power);
+  }
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new MoveArmCommand());
   }
 }

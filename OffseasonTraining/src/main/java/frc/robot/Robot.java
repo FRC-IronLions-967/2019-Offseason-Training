@@ -27,6 +27,7 @@ public class Robot extends IterativeRobot {
   public static DriveSubsystem driveSubsystem;
   public static HatchSubsystem hatchSubsystem;
   public static CargoSubsystem cargoSubsystem;
+  public static IntakeSubsystem intakeSubsystem;
   public static IO io;
 
   /**
@@ -41,6 +42,7 @@ public class Robot extends IterativeRobot {
     driveSubsystem = new DriveSubsystem();
     hatchSubsystem = new HatchSubsystem();
     cargoSubsystem = new CargoSubsystem();
+    intakeSubsystem = new IntakeSubsystem();
     io = new IO();
   }
 
