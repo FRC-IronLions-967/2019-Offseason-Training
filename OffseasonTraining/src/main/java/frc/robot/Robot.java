@@ -26,6 +26,7 @@ public class Robot extends IterativeRobot {
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   public static DriveSubsystem driveSubsystem;
   public static HatchSubsystem hatchSubsystem;
+  public static CargoSubsystem cargoSubsystem;
   public static IO io;
 
   /**
@@ -39,6 +40,7 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putData("Auto choices", m_chooser);
     driveSubsystem = new DriveSubsystem();
     hatchSubsystem = new HatchSubsystem();
+    cargoSubsystem = new CargoSubsystem();
     io = new IO();
   }
 

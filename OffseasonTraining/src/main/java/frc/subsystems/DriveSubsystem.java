@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.commands.SplitArcadeCommand;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.*;
 
 /**
  * Add your docs here.
@@ -19,10 +19,10 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 public class DriveSubsystem extends Subsystem {
   private TalonSRX rightMaster;
   private TalonSRX rightSlave0;
-  private TalonSRX rightSlave1;
+  private VictorSPX rightSlave1;
   private TalonSRX leftMaster;
   private TalonSRX leftSlave0;
-  private TalonSRX leftSlave1;
+  private VictorSPX leftSlave1;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   // TODO create some motor controller objects for driving
@@ -32,10 +32,10 @@ public class DriveSubsystem extends Subsystem {
   public DriveSubsystem() {
     rightMaster = new TalonSRX(3);
     rightSlave0 = new TalonSRX(4);
-    rightSlave1 = new TalonSRX(5);
+    rightSlave1 = new VictorSPX(5);
     leftMaster = new TalonSRX(6);
     leftSlave0 = new TalonSRX(7);
-    leftSlave1 = new TalonSRX(8);
+    leftSlave1 = new VictorSPX(8);
 
     leftMaster.setInverted(true);
     leftSlave0.setInverted(true);
