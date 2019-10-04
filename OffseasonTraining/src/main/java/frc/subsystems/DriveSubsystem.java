@@ -8,7 +8,6 @@
 package frc.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.*;
 import frc.commands.drives.*;
@@ -23,16 +22,16 @@ public class DriveSubsystem extends Subsystem {
   private TalonSRX leftMaster;
   private TalonSRX rightSlave0;
   private TalonSRX leftSlave0;
-  private TalonSRX rightSlave1;
-  private TalonSRX leftSlave1;
+  private VictorSPX rightSlave1;
+  private VictorSPX leftSlave1;
   // TODO create some methods for tank and split arcade drive, each using two inputs
   public DriveSubsystem() {
     rightMaster = new TalonSRX(3);
     rightSlave0 = new TalonSRX(4);
-    rightSlave1 = new TalonSRX(5);
+    rightSlave1 = new VictorSPX(5);
     leftMaster = new TalonSRX(6);
     leftSlave0 = new TalonSRX(7);
-    leftSlave1 = new TalonSRX(8);
+    leftSlave1 = new VictorSPX(8);
 
     leftMaster.setInverted(true);
     leftSlave0.setInverted(true);
