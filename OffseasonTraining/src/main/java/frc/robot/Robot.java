@@ -10,7 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.subsystems.DriveSubsystem;
+import frc.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,6 +25,10 @@ public class Robot extends IterativeRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   public static DriveSubsystem driveSubsystem;
+  public static HatchSubsystem hatchSubsystem;
+  public static CargoSubsystem cargoSubsystem;
+  public static IntakeSubsystem intakeSubsystem;
+  public static IO io;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -36,6 +40,10 @@ public class Robot extends IterativeRobot {
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
     driveSubsystem = new DriveSubsystem();
+    hatchSubsystem = new HatchSubsystem();
+    cargoSubsystem = new CargoSubsystem();
+    intakeSubsystem = new IntakeSubsystem();
+    io = new IO();
   }
 
   /**
