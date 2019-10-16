@@ -5,27 +5,27 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.commands;
+package frc.commands.arm;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class SplitArcadeCommand extends Command {
-  public SplitArcadeCommand() {
+public class ArmDown extends Command {
+  public ArmDown() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.driveSubsystem);
+    requires(Robot.hatchSubsystem);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.hatchSubsystem.armDown();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.driveSubsystem.arcadeDrive(Robot.io.getXbox0().getRawAxis(1), Robot.io.getXbox0().getRawAxis(4));
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -17,18 +17,16 @@ import com.ctre.phoenix.motorcontrol.can.*;
  * Add your docs here.
  */
 public class DriveSubsystem extends Subsystem {
-  private TalonSRX rightMaster;
-  private TalonSRX rightSlave0;
-  private VictorSPX rightSlave1;
-  private TalonSRX leftMaster;
-  private TalonSRX leftSlave0;
-  private VictorSPX leftSlave1;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   // TODO create some motor controller objects for driving
-
+  private TalonSRX rightMaster;
+  private TalonSRX leftMaster;
+  private TalonSRX rightSlave0;
+  private TalonSRX leftSlave0;
+  private VictorSPX rightSlave1;
+  private VictorSPX leftSlave1;
   // TODO create some methods for tank and split arcade drive, each using two inputs
-
   public DriveSubsystem() {
     rightMaster = new TalonSRX(3);
     rightSlave0 = new TalonSRX(4);

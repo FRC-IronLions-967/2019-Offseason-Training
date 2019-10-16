@@ -7,7 +7,8 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.IterativeRobot;
+
+import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.subsystems.*;
@@ -19,16 +20,16 @@ import frc.subsystems.*;
  * creating this project, you must also update the build.gradle file in the
  * project.
  */
-public class Robot extends IterativeRobot {
+public class Robot extends TimedRobot{
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   public static DriveSubsystem driveSubsystem;
   public static HatchSubsystem hatchSubsystem;
-  public static CargoSubsystem cargoSubsystem;
   public static IntakeSubsystem intakeSubsystem;
-  public static IO io;
+  public static CargoSubsystem cargoSubsystem;
+  public static IO m_io;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -41,9 +42,9 @@ public class Robot extends IterativeRobot {
     SmartDashboard.putData("Auto choices", m_chooser);
     driveSubsystem = new DriveSubsystem();
     hatchSubsystem = new HatchSubsystem();
-    cargoSubsystem = new CargoSubsystem();
     intakeSubsystem = new IntakeSubsystem();
-    io = new IO();
+    cargoSubsystem = new CargoSubsystem();
+    m_io = new IO();
   }
 
   /**
@@ -91,6 +92,11 @@ public class Robot extends IterativeRobot {
         // Put default auto code here
         break;
     }
+  }
+
+  @Override
+  public void teleopInit() {
+    driveSubsystem.initDefaultCommand();
   }
 
   /**

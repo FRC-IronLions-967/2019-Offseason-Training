@@ -8,6 +8,10 @@
 package frc.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.*;
+import frc.commands.cargo.MoveBall;
+import frc.utils.Utils;
 
 /**
  * Add your docs here.
@@ -28,5 +32,6 @@ public class IntakeSubsystem extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new MoveBall());
   }
 }
