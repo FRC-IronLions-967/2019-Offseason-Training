@@ -47,10 +47,12 @@ public class DriveSubsystem extends Subsystem {
     leftMaster.set(ControlMode.PercentOutput, l);
   }
   public void tankDrive(double rAxis, double lAxis) {
-    move(rAxis,lAxis);
+    move(rAxis, lAxis);
   }
   public void arcadeDrive(double yAxis, double xAxis){
-    move((xAxis + yAxis)/2, (xAxis - yAxis)/2);
+    System.out.println(xAxis + yAxis);
+    System.out.println(xAxis - yAxis);
+    move((xAxis + yAxis), (xAxis - yAxis));
   }
   @Override
   public void initDefaultCommand() {

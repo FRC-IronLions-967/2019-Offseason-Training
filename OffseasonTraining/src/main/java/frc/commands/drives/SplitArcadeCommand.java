@@ -26,7 +26,7 @@ public class SplitArcadeCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.driveSubsystem.arcadeDrive(Robot.m_io.getXbox0().getRawAxis(1), Robot.m_io.getXbox1().getRawAxis(4));
+    Robot.driveSubsystem.arcadeDrive(Robot.m_io.xbox0.getRawAxis(1), Robot.m_io.xbox0.getRawAxis(4));
   }
 
   // Make this return true when this Command no longer needs to run execute()

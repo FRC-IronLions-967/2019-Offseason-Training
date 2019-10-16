@@ -19,12 +19,12 @@ import frc.commands.arm.*;
  // don't worry about this class too much, it should work for you
 
 public class IO {
-    private Joystick xbox0;
-    private Joystick xbox1;
+    public Joystick xbox0 = new Joystick(0);
+    public Joystick xbox1 = new Joystick(1);
 
     public IO() {
-        xbox0 = new Joystick(0);
-        xbox1 = new Joystick(1);
+        // xbox0 = new Joystick(0);
+        // xbox1 = new Joystick(1);
         JoystickButton xbox1_a = new JoystickButton(xbox1, 1);
         JoystickButton xbox1_b = new JoystickButton(xbox1, 2);
         JoystickButton xbox1_x = new JoystickButton(xbox1, 3);
