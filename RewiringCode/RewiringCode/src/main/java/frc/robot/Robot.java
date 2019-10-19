@@ -7,7 +7,9 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.*;
@@ -24,7 +26,7 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   public static DriveSubsystem driveSubsystem;
-  public static HatchSubsystem HatchSubsystem;
+  public static HatchSubsystem hatchSubsystem;
   public static CargoArmSubsystem cargoArmSubsystem;
   public static CargoSubsystem cargoSubsystem;
   public static IO io;
@@ -39,9 +41,10 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto choices", m_chooser);
     driveSubsystem = new DriveSubsystem();
     hatchSubsystem = new HatchSubsystem();
-    intakeSubsystem = new IntakeSubsystem();
+    cargoArmSubsystem = new CargoArmSubsystem();
     cargoSubsystem = new CargoSubsystem();
     io = new IO();
+    CameraServer.getInstance().startAutomaticCapture();
   }
 
   /**
@@ -54,6 +57,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    Scheduler.getInstance().run();
   }
 
   /**
@@ -79,15 +83,15 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-      case kCustomAuto:
-        // Put custom auto code here
-        break;
-      case kDefaultAuto:
-      default:
-        // Put default auto code here
-        break;
-    }
+    // switch (m_autoSelected) {
+    //   case kCustomAuto:
+    //     // Put custom auto code here
+    //     break;
+    //   case kDefaultAuto:
+    //   default:
+    //     // Put default auto code here
+    //     break;
+    // }
   }
 
   /**

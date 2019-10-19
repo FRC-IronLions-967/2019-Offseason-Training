@@ -26,7 +26,7 @@ public class CargoArmSubsystem extends Subsystem {
     leftArm = new TalonSRX(1);
     rightArm = new TalonSRX(2);
 
-    leftArm.setInverted(true);
+    rightArm.setInverted(true);
   }
 
   public void moveArm(double power) {

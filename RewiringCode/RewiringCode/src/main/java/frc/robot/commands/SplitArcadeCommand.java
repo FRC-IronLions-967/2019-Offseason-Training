@@ -26,6 +26,8 @@ public class SplitArcadeCommand extends Command {
   @Override
   protected void execute() {
     Robot.driveSubsystem.arcadeDrive(Robot.io.xbox0.getRawAxis(1), Robot.io.xbox0.getRawAxis(4));
+    System.out.println(Robot.io.xbox0.getRawAxis(1));
+    System.out.println(Robot.io.xbox0.getRawAxis(4));
   }
 
   // Make this return true when this Command no longer needs to run execute()

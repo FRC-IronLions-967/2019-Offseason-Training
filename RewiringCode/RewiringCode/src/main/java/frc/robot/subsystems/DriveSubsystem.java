@@ -33,9 +33,9 @@ public class DriveSubsystem extends Subsystem {
     leftSlave0 = new TalonSRX(7);
     leftSlave1 = new VictorSPX(8);
 
-    leftMaster.setInverted(true);
-    leftSlave1.setInverted(true);
-    leftSlave0.setInverted(true);
+    rightMaster.setInverted(true);
+    rightSlave1.setInverted(true);
+    rightSlave0.setInverted(true);
 
     rightSlave0.follow(rightMaster);
     rightSlave1.follow(rightMaster);
