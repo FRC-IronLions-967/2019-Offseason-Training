@@ -10,8 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystem.DriveSubsystem;
-
+import frc.robot.subsystems.*;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -25,8 +24,8 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   public static DriveSubsystem driveSubsystem;
-  public static HatchSubsystem hatchSubsystem;
-  public static IntakeSubsystem intakeSubsystem;
+  public static HatchSubsystem HatchSubsystem;
+  public static CargoArmSubsystem cargoArmSubsystem;
   public static CargoSubsystem cargoSubsystem;
   public static IO io;
   /**
