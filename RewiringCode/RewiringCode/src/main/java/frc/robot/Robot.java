@@ -25,7 +25,7 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   public static DriveSubsystem driveSubsystem;
-  public static HatchSubsystem HatchSubsystem;
+  public static HatchSubsystem hatchSubsystem;
   public static IntakeSubsystem intakeSubsystem;
   public static CargoSubsystem cargoSubsystem;
   public static IO io;
@@ -38,6 +38,11 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
+    driveSubsystem = new DriveSubsystem();
+    hatchSubsystem = new HatchSubsystem();
+    intakeSubsystem = new IntakeSubsystem();
+    cargoSubsystem = new CargoSubsystem();
+    io = new IO();
   }
 
   /**
