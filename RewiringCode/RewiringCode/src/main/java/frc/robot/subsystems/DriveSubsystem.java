@@ -5,11 +5,12 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystem;
+package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.*;
 
+import frc.robot.commands.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * Add your docs here.
@@ -54,6 +55,6 @@ public class DriveSubsystem extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new SplitArcadeCommand);
+    setDefaultCommand(new SplitArcadeCommand());
   }
 }
