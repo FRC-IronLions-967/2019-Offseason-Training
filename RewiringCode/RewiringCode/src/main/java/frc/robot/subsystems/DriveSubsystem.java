@@ -43,14 +43,17 @@ public class DriveSubsystem extends Subsystem {
     leftSlave1.follow(leftMaster);
   }
 
-  public void move(double r, double l){
+  public void move(double r, double l) {
+    l = (l > 1) ? 1 : l;
+    r = (r > 1) ? 1 : r;
     rightMaster.set(ControlMode.PercentOutput, r);
     leftMaster.set(ControlMode.PercentOutput, l);
   }
 
-  public void arcadeDrive(double xAxis, double yAxis){
-    move((xAxis + yAxis)/2, (xAxis - yAxis)/2);
+  public void arcadeDrive(double xAxis, double yAxis) {
+    move((xAxis + yAxis), (xAxis - yAxis));
   }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

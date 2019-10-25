@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.Utils;
 
 public class SplitArcadeCommand extends Command {
   public SplitArcadeCommand() {
@@ -25,9 +26,9 @@ public class SplitArcadeCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.driveSubsystem.arcadeDrive(Robot.io.xbox0.getRawAxis(1), Robot.io.xbox0.getRawAxis(4));
-    System.out.println(Robot.io.xbox0.getRawAxis(1));
-    System.out.println(Robot.io.xbox0.getRawAxis(4));
+    Robot.driveSubsystem.arcadeDrive(Utils.deadband(Robot.io.xbox0.getRawAxis(1), 0.05), Utils.deadband(Robot.io.xbox0.getRawAxis(4), 0.05));
+    // System.out.println(Robot.io.xbox0.getRawAxis(1));
+    // System.out.println(Robot.io.xbox0.getRawAxis(4));
   }
 
   // Make this return true when this Command no longer needs to run execute()

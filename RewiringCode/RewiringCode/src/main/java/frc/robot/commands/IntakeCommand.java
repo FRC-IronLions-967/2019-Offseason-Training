@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.*;
+import frc.Utils;
 
 public class IntakeCommand extends Command {
   public IntakeCommand() {
@@ -25,7 +26,7 @@ public class IntakeCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.cargoSubsystem.intake(Robot.io.xbox1.getRawAxis(5));
+    Robot.cargoSubsystem.intake(Utils.deadband(Robot.io.xbox1.getRawAxis(5), 0.05));
   }
 
   // Make this return true when this Command no longer needs to run execute()
