@@ -7,6 +7,9 @@
 
 package frc.robot;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoSink;
+import edu.wpi.cscore.VideoSource;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -31,6 +34,10 @@ public class Robot extends TimedRobot {
   public static CargoSubsystem cargoSubsystem;
   public static IO io;
   public static int camera = 0;
+  public static UsbCamera camera0;
+  public static UsbCamera camera1;
+  public static VideoSink server;
+  boolean prevTrigger = false;
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -45,7 +52,12 @@ public class Robot extends TimedRobot {
     cargoArmSubsystem = new CargoArmSubsystem();
     cargoSubsystem = new CargoSubsystem();
     io = new IO();
-    CameraServer.getInstance().startAutomaticCapture(0);
+    camera0 = CameraServer.getInstance().startAutomaticCapture(0);
+    camera1 = CameraServer.getInstance().startAutomaticCapture(1);
+    server = CameraServer.getInstance().getServer();
+    camera0.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
+    camera1.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
+    // server.setSource(camera0);
   }
 
   /**
@@ -61,14 +73,12 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
   }
 
-  public static void toggleCamera() {
-    if(camera == 0) {
-      CameraServer.getInstance().startAutomaticCapture(1);
-      camera = 1;
-    } else if(camera == 1) {
-      CameraServer.getInstance().startAutomaticCapture(0);
-      camera = 0;
-    }
+  public static void frontCamera() {
+    server.setSource(camera1);
+  }
+
+  public static void rearCamera() {
+    server.setSource(camera0);
   }
 
   /**
@@ -110,6 +120,12 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    if (io.xbox0.getTrigger() && !prevTrigger) {
+      server.setSource(camera0);
+    } else if (!io.xbox0.getTrigger() && prevTrigger) {
+      server.setSource(camera1);
+    }
+    prevTrigger = io.xbox0.getTrigger();
   }
 
   /**

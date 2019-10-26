@@ -12,6 +12,7 @@ import com.ctre.phoenix.motorcontrol.can.*;
 
 import frc.robot.commands.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.Robot;
 /**
  * Add your docs here.
  */
@@ -50,6 +51,11 @@ public class DriveSubsystem extends Subsystem {
   public void move(double r, double l) {
     rightMaster.set(ControlMode.PercentOutput, r);
     leftMaster.set(ControlMode.PercentOutput, l);
+    if(l < -0.05) {
+      Robot.server.setSource(Robot.camera0);
+    } else {
+      Robot.server.setSource(Robot.camera1);
+    }
   }
 
   public void arcadeDrive(double xAxis, double yAxis) {

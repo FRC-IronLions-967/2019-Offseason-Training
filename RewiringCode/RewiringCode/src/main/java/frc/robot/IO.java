@@ -23,12 +23,14 @@ public class IO {
         xbox1 = new Joystick(1);
 
         JoystickButton xbox0_a = new JoystickButton(xbox0, 1);
+        JoystickButton xbox0_b = new JoystickButton(xbox0, 1);
         JoystickButton xbox1_a = new JoystickButton(xbox1, 1);
         JoystickButton xbox1_b = new JoystickButton(xbox1, 2);
         JoystickButton xbox1_x = new JoystickButton(xbox1, 3);
         JoystickButton xbox1_y = new JoystickButton(xbox1, 4);
 
-        xbox0_a.whenPressed(new SwapCameraCommand());
+        // xbox0_a.whenPressed(new RearCameraCommand());
+        // xbox0_b.whenPressed(new FrontCameraCommand());
         xbox1_a.whenPressed(new GrabberOpenCommand());
         xbox1_b.whenPressed(new GrabberCloseCommand());
         xbox1_x.whenPressed(new ArmForwardCommand());
