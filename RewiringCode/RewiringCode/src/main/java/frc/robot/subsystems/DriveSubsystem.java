@@ -33,6 +33,10 @@ public class DriveSubsystem extends Subsystem {
     leftSlave0 = new TalonSRX(7);
     leftSlave1 = new VictorSPX(8);
 
+    leftMaster.setInverted(false);
+    leftSlave0.setInverted(false);
+    leftSlave1.setInverted(false);
+
     rightMaster.setInverted(true);
     rightSlave1.setInverted(true);
     rightSlave0.setInverted(true);
@@ -44,8 +48,6 @@ public class DriveSubsystem extends Subsystem {
   }
 
   public void move(double r, double l) {
-    l = (l > 1) ? 1 : l;
-    r = (r > 1) ? 1 : r;
     rightMaster.set(ControlMode.PercentOutput, r);
     leftMaster.set(ControlMode.PercentOutput, l);
   }

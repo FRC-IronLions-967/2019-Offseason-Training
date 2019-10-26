@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
   public static CargoArmSubsystem cargoArmSubsystem;
   public static CargoSubsystem cargoSubsystem;
   public static IO io;
+  public static int camera = 0;
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -44,7 +45,7 @@ public class Robot extends TimedRobot {
     cargoArmSubsystem = new CargoArmSubsystem();
     cargoSubsystem = new CargoSubsystem();
     io = new IO();
-    CameraServer.getInstance().startAutomaticCapture();
+    CameraServer.getInstance().startAutomaticCapture(0);
   }
 
   /**
@@ -58,6 +59,16 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     Scheduler.getInstance().run();
+  }
+
+  public static void toggleCamera() {
+    if(camera == 0) {
+      CameraServer.getInstance().startAutomaticCapture(1);
+      camera = 1;
+    } else if(camera == 1) {
+      CameraServer.getInstance().startAutomaticCapture(0);
+      camera = 0;
+    }
   }
 
   /**

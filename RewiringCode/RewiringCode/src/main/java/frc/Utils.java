@@ -12,10 +12,6 @@ package frc;
  */
 public class Utils {
     public static double deadband(double value, double deadbandValue) {
-        // if(Math.abs(value) < deadbandValue) {
-        //     return 0;
-        // }
-        // return value;
-        return value;
+        return (Math.abs(value) < deadbandValue) ? 0 : value;
      }
 }
