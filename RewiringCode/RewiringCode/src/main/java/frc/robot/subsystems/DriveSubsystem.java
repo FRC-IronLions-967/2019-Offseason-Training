@@ -64,10 +64,6 @@ public class DriveSubsystem extends Subsystem {
     move((xAxis + yAxis), (xAxis - yAxis));
   }
 
-  public void tankDrive(double r, double l) {
-    move(r, l);
-  }
-
   public double getLeftEncoder() {
     return leftMaster.getSensorCollection().getQuadraturePosition();
   }
