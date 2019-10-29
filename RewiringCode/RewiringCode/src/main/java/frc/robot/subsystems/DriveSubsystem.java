@@ -49,9 +49,11 @@ public class DriveSubsystem extends Subsystem {
   }
 
   public void move(double r, double l) {
+    r = (Math.abs(r) > 1) ? 1 : r;
+    l = (Math.abs(l) > 1) ? 1 : l;
     rightMaster.set(ControlMode.PercentOutput, r);
     leftMaster.set(ControlMode.PercentOutput, l);
-    if(l < -0.05) {
+    if(l < -0.05 && r < -0.05) {
       Robot.server.setSource(Robot.camera0);
     } else {
       Robot.server.setSource(Robot.camera1);
@@ -60,6 +62,24 @@ public class DriveSubsystem extends Subsystem {
 
   public void arcadeDrive(double xAxis, double yAxis) {
     move((xAxis + yAxis), (xAxis - yAxis));
+  }
+
+  public void tankDrive(double r, double l) {
+    move(r, l);
+  }
+
+  public double getLeftEncoder() {
+    return leftMaster.getSensorCollection().getQuadraturePosition();
+  }
+
+  public double getRightEncoder() {
+    return rightMaster.getSensorCollection().getQuadraturePosition();
+  }
+
+  public boolean zeroEncoders() {
+    leftMaster.getSensorCollection().setQuadraturePosition(0, 0);
+    rightMaster.getSensorCollection().setQuadraturePosition(0, 0);
+    
   }
 
   @Override
