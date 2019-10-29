@@ -62,6 +62,14 @@ public class DriveSubsystem extends Subsystem {
     move((xAxis + yAxis), (xAxis - yAxis));
   }
 
+  public double getLeftEncoder() {
+    return -leftMaster.getSensorCollection().getQuadraturePosition();
+  }
+
+  public double getRightEncoder() {
+    return rightMaster.getSensorCollection().getQuadraturePosition();
+  }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
