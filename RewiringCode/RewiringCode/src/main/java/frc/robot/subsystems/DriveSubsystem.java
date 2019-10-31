@@ -49,11 +49,13 @@ public class DriveSubsystem extends Subsystem {
   }
 
   public void move(double r, double l) {
-    r = (Math.abs(r) > 1) ? 1 : r;
-    l = (Math.abs(l) > 1) ? 1 : l;
+    r = (r > 1) ? 1 : r;
+    l = (l > 1) ? 1 : l;
+    r = (r < -1) ? -1: r;
+    l = (l < -1) ? -1 : l;
     rightMaster.set(ControlMode.PercentOutput, r);
     leftMaster.set(ControlMode.PercentOutput, l);
-    if(l < -0.05 && r < -0.05) {
+    if(l > 0.05 && r > 0.05) {
       Robot.server.setSource(Robot.camera0);
     } else {
       Robot.server.setSource(Robot.camera1);
@@ -61,6 +63,15 @@ public class DriveSubsystem extends Subsystem {
   }
 
   public void arcadeDrive(double xAxis, double yAxis) {
+    move((xAxis + yAxis), (xAxis - yAxis));
+  }
+
+  public void arcadeDriveLookup(double xAxis, double yAxis) {
+    if(yAxis < 0) {
+      yAxis = -1.10803324089 * Math.pow((yAxis - 0.05), 2);
+    } else {
+      yAxis = 1.10803324089 * Math.pow((yAxis - 0.05), 2);
+    }
     move((xAxis + yAxis), (xAxis - yAxis));
   }
 
@@ -75,7 +86,7 @@ public class DriveSubsystem extends Subsystem {
   public boolean zeroEncoders() {
     leftMaster.getSensorCollection().setQuadraturePosition(0, 0);
     rightMaster.getSensorCollection().setQuadraturePosition(0, 0);
-    
+    return true;
   }
 
   @Override
