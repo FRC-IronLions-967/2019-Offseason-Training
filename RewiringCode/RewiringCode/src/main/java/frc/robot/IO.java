@@ -37,6 +37,7 @@ public class IO {
         xbox1_y.whenPressed(new ArmBackCommand());
 
         xbox0_a.close();
+        xbox0_b.close();
         xbox1_a.close();
         xbox1_b.close();
         xbox1_x.close();
