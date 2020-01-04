@@ -35,9 +35,9 @@ public class Dijkstra {
 
     //standard convenience setter methods to alter values to run the algorithm again without creating a new objects
     //TODO
-    public void changeGraph(int newGraph[][], int numNodes) throws DijkstraException {
+    public void changeGraph(int newGraph[][], int numNodes) throws Exception {
         if(newGraph[0].length != newGraph.length) {
-            throw new DijkstraException();
+            throw new Exception();
         } else {
             this.numNodes = graph.length;
             this.graph = newGraph;
